@@ -54,7 +54,7 @@ public partial class FormMain : Form
 			double sashesCost = numSashes * this._config.SashPrice;
 			double retailCost = frameCost + sashesCost;
 			int wholesaleDiscount = this._config.WholesaleDiscount;
-			double wholesaleCost = retailCost * (1 - (this._config.WholesaleDiscount) / 100.0);
+			double wholesaleCost = retailCost * (1 + (this._config.WholesaleDiscount) / 100.0);
 
 			this.SetAreaValueText(area);
 			this.SetRetailValueText(retailCost);
