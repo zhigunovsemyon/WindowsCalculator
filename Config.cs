@@ -1,10 +1,11 @@
 ﻿namespace WindowsCalculator;
 
-public class Config (int wholesaleDiscount, double insulatedFactor,
+public class Config (int wholesaleDiscount, double standardGlassPrice, double insulatedGlassPrice,
 		double sashPrice, double aluminiumPrice, double plasticPrice, double woodPrice)
 {
 	public int WholesaleDiscount { get; set; } = wholesaleDiscount;
-	public double InsulatedFactor { get; set; } = insulatedFactor;
+	public double StandardGlassPrice { get; set; } = standardGlassPrice;
+	public double InsulatedGlassPrice { get; set; } = insulatedGlassPrice;
 	public double SashPrice { get; set; } = sashPrice;
 	public double AluminiumPrice { get; set; } = aluminiumPrice;
 	public double PlasticPrice { get; set; } = plasticPrice;
@@ -18,10 +19,10 @@ public class Config (int wholesaleDiscount, double insulatedFactor,
 		_ => throw new NotImplementedException("Неизвестный материал"),
 	};
 
-	public double GetGlassMultiplier (string? type) => type switch
+	public double GetGlassPrice(string? type) => type switch
 	{
-		"Стеклопакет" => this.InsulatedFactor,
-		"Обычное стекло" => 1,
+		"Стеклопакет" => this.InsulatedGlassPrice,
+		"Обычное стекло" => this.StandardGlassPrice,
 		_ => throw new NotImplementedException("Неизвестный материал"),
 	};
 }
