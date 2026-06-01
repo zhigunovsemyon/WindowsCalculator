@@ -49,7 +49,6 @@ partial class FormMain
 		this.lblAreaValue = new Label();
 		this.lblArea = new Label();
 		this.menuStrip1 = new MenuStrip();
-		this.settingsToolStripMenuItem = new ToolStripMenuItem();
 		this.exitToolStripMenuItem = new ToolStripMenuItem();
 		this.grpParameters.SuspendLayout();
 		((System.ComponentModel.ISupportInitialize)this.numSashes).BeginInit();
@@ -287,19 +286,12 @@ partial class FormMain
 		// 
 		// menuStrip1
 		// 
-		this.menuStrip1.Items.AddRange(new ToolStripItem[] { this.settingsToolStripMenuItem, this.exitToolStripMenuItem });
+		this.menuStrip1.Items.AddRange(new ToolStripItem[] { this.exitToolStripMenuItem });
 		this.menuStrip1.Location = new Point(0, 0);
 		this.menuStrip1.Name = "menuStrip1";
 		this.menuStrip1.Size = new Size(800, 24);
 		this.menuStrip1.TabIndex = 5;
 		this.menuStrip1.Text = "menuStrip1";
-		// 
-		// settingsToolStripMenuItem
-		// 
-		this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-		this.settingsToolStripMenuItem.Size = new Size(83, 20);
-		this.settingsToolStripMenuItem.Text = "Параметры";
-		this.settingsToolStripMenuItem.Click += this.settingsToolStripMenuItem_Click;
 		// 
 		// exitToolStripMenuItem
 		// 
@@ -362,7 +354,6 @@ partial class FormMain
 	private System.Windows.Forms.Label lblWholesaleValue;
 	private System.Windows.Forms.Label lblDetails;
 	private MenuStrip menuStrip1;
-	private ToolStripMenuItem settingsToolStripMenuItem;
 	private ToolStripMenuItem exitToolStripMenuItem;
 }
 

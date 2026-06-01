@@ -38,8 +38,6 @@ public partial class FormMain : Form
 
 	private void exitToolStripMenuItem_Click (object sender, System.EventArgs e) => this.Close();
 
-	private void settingsToolStripMenuItem_Click (object sender, System.EventArgs e) => this.Close();
-
 	private void input_ValueChanged (object sender, System.EventArgs e) => this.CalculateCost();
 
 	private void input_SelectedIndexChanged (object sender, System.EventArgs e) => this.CalculateCost();
@@ -59,8 +57,8 @@ public partial class FormMain : Form
 			int numSashes = (int)this.numSashes.Value;
 			double widthMeters = (double)this.numWidth.Value / 100;
 			double heightMeters = (double)this.numHeight.Value / 100;
-			double materialPrice = GetMaterialPrice((string?)cmbMaterial.SelectedItem);
-			double glassMultiplier = GetGlassMultiplier((string?)this.cmbGlassType.SelectedItem);
+			double materialPrice = GetMaterialPrice((string?)cmbMaterial.SelectedItem, this._config);
+			double glassMultiplier = GetGlassMultiplier((string?)this.cmbGlassType.SelectedItem, this._config);
 
 			double area = widthMeters * heightMeters;
 			double frameCost = area * materialPrice * glassMultiplier;
@@ -95,17 +93,17 @@ public partial class FormMain : Form
 		wholesaleDiscount
 	);
 
-	private static double GetMaterialPrice (string? material) => material switch
+	private static double GetMaterialPrice (string? material, Config config) => material switch
 	{
-		"Дерево" => DefaultWoodPrice,
-		"Алюминий" => DefaultAluminiumPrice,
-		"Пластик" => DefaultPlasticPrice,
+		"Дерево" => config.WoodPrice,
+		"Алюминий" => config.AluminiumPrice,
+		"Пластик" => config.PlasticPrice,
 		_ => throw new NotImplementedException("Неизвестный материал"),
 	};
 
-	private static double GetGlassMultiplier (string? type) => type switch
+	private static double GetGlassMultiplier (string? type, Config config) => type switch
 	{
-		"Стеклопакет" => DefaultInsulatedFactor,
+		"Стеклопакет" => config.InsulatedFactor,
 		"Обычное стекло" => 1,
 		_ => throw new NotImplementedException("Неизвестный материал"),
 	};
