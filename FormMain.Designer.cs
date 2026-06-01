@@ -304,12 +304,14 @@ partial class FormMain
 		// 
 		this.AutoScaleDimensions = new SizeF(7F, 15F);
 		this.AutoScaleMode = AutoScaleMode.Font;
+		this.BackColor = SystemColors.GradientInactiveCaption;
 		this.ClientSize = new Size(800, 348);
 		this.Controls.Add(this.grpResult);
 		this.Controls.Add(this.grpParameters);
 		this.Controls.Add(this.lblTitle);
 		this.Controls.Add(this.menuStrip1);
 		this.Font = new Font("Segoe UI", 9F);
+		this.ForeColor = Color.Black;
 		this.FormBorderStyle = FormBorderStyle.FixedSingle;
 		this.MainMenuStrip = this.menuStrip1;
 		this.MaximizeBox = false;
