@@ -46,8 +46,8 @@ public partial class FormMain : Form
 			int numSashes = (int)this.numSashes.Value;
 			double widthMeters = (double)this.numWidth.Value / 100;
 			double heightMeters = (double)this.numHeight.Value / 100;
-			double materialPrice = GetMaterialPrice((string?)cmbMaterial.SelectedItem, this._config);
-			double glassMultiplier = GetGlassMultiplier((string?)this.cmbGlassType.SelectedItem, this._config);
+			double materialPrice = this._config.GetMaterialPrice((string?)this.cmbMaterial.SelectedItem);
+			double glassMultiplier = this._config.GetGlassMultiplier((string?)this.cmbGlassType.SelectedItem);
 
 			double area = widthMeters * heightMeters;
 			double frameCost = area * materialPrice * glassMultiplier;
@@ -81,21 +81,6 @@ public partial class FormMain : Form
 		FormatPrice(sashPrice),
 		wholesaleDiscount
 	);
-
-	private static double GetMaterialPrice (string? material, Config config) => material switch
-	{
-		"Дерево" => config.WoodPrice,
-		"Алюминий" => config.AluminiumPrice,
-		"Пластик" => config.PlasticPrice,
-		_ => throw new NotImplementedException("Неизвестный материал"),
-	};
-
-	private static double GetGlassMultiplier (string? type, Config config) => type switch
-	{
-		"Стеклопакет" => config.InsulatedFactor,
-		"Обычное стекло" => 1,
-		_ => throw new NotImplementedException("Неизвестный материал"),
-	};
 
 	private static string FormatPrice (double price) => price.ToString("N0") + " ₽";
 }

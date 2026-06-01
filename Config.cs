@@ -9,4 +9,19 @@ public class Config (int wholesaleDiscount, double insulatedFactor,
 	public double AluminiumPrice { get; set; } = aluminiumPrice;
 	public double PlasticPrice { get; set; } = plasticPrice;
 	public double WoodPrice { get; set; } = woodPrice;
+
+	public double GetMaterialPrice (string? material) => material switch
+	{
+		"Дерево" => this.WoodPrice,
+		"Алюминий" => this.AluminiumPrice,
+		"Пластик" => this.PlasticPrice,
+		_ => throw new NotImplementedException("Неизвестный материал"),
+	};
+
+	public double GetGlassMultiplier (string? type) => type switch
+	{
+		"Стеклопакет" => this.InsulatedFactor,
+		"Обычное стекло" => 1,
+		_ => throw new NotImplementedException("Неизвестный материал"),
+	};
 }
